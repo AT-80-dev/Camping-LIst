@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>CampingList</title>
+
+<style>
+:root {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --border: #e5e7eb;
+  --section: #f8fafc;
+  --accent: #10a37f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+    --border: #1e293b;
+    --section: #020617;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 24px 16px 60px;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1 { margin: 0; }
+
+.controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.progress {
+  margin: 14px 0 22px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.bar {
+  height: 8px;
+  background: var(--border);
+  border-radius: 999px;}
+
+  input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+</style>
+</head>
+
+<body>
+<main>
+
+<h1>Camping List</h1>
+<div class="controls">
+  <button onclick="resetChecklist()">Reset</button>
+</div>
+
+<div class="progress">
+  Progress: <span id="percent">0%</span>
+  <div class="bar">
+    <div id="bar" style="height:100%; width:0%; background:var(--accent); border-radius:999px;"></div>
+  </div>
+</div>
+
+<!-- PERSONAL -->
+<section>
+<h2>1. Personal (PER)</h2>
+<div class="checklist">
+<label><input type="checkbox"><span>cash</span></label><br>
+<label><input type="checkbox"><span>susi</span></label><br>
+<label><input type="checkbox"><span>phone</span></label><br>
+<label><input type="checkbox"><span>salamin</span></label><br>
+<label><input type="checkbox"><span>watch</span></label><br>
+<label><input type="checkbox"><span>Camera</span></label><br>
+<label><input type="checkbox"><span>Personal medications</span></label><br>
+<label><input type="checkbox"><span>Flashlights</span></label><br>
+<label><input type="checkbox"><span>knife</span></label><br>
+<label><input type="checkbox"><span>poopbag</span></label><br>
+<label><input type="checkbox"><span>Hand sanitizer</span></label><br>
+<label><input type="checkbox"><span>Wet wipes</span></label><br>
+<label><input type="checkbox"><span>Chargers & power banks</span></label><br>
+
+<label><input type="checkbox"><span>Backpacks for clothes</span></label><br>
+<label><input type="checkbox"><span>Extra clothes (waterproof bag)</span></label><br>
+<label><input type="checkbox"><span>Slippers</span></label><br>
+<label><input type="checkbox"><span>Micro fiber Towel</span></label><br>
+<label><input type="checkbox"><span>Shampoo</span></label><br>
+<label><input type="checkbox"><span>Soap</span></label><br>
+<label><input type="checkbox"><span>tooth brush</span></label><br>
+<label><input type="checkbox"><span>tooth paste</span></label><br>
+<label><input type="checkbox"><span>Tissue</span></label><br>
+<label><input type="checkbox"><span>First aid kit</span></label><br>
+<label><input type="checkbox"><span>Sunscreen</span></label><br>
+<label><input type="checkbox"><span>Tumbler</span></label><br>
+</div>
+</section>
+
+<section>
+<h2>Dog Items</h2>
+<div class="checklist">
+  <label><input type="checkbox" id="dogfood"><span>Dog food chicken</span></label><br>
+  <label><input type="checkbox" id="kibbles"><span>Dog food kibbles</span></label><br>
+  <label><input type="checkbox" id="can"><span>Dog food can</span></label><br>
+  <label><input type="checkbox" id="treats"><span>Dog treats</span></label><br>
+  <label><input type="checkbox" id="carrots"><span>Carrots</span></label><br>
+  <label><input type="checkbox" id="dogbowl"><span>Dog bowl</span></label><br>
+  <label><input type="checkbox" id="poopbags"><span>Poop bags</span></label><br>
+  <label><input type="checkbox" id="leash"><span>Leash</span></label><br>
+  <label><input type="checkbox" id="campcrib"><span>camp crib</span></label><br>
+</div>
+</section>
+
+<!-- SHELTER -->
+<section>
+<h2>2. Shelter and Sleeping (SS)</h2>
+
+<h3>Shelter</h3>
+<div class="checklist">
+<label><input type="checkbox"><span>Tent</span></label><br>
+<label><input type="checkbox"><span>Tent pegs</span></label><br>
+<label><input type="checkbox"><span>Poles</span></label><br>
+<label><input type="checkbox"><span>Ground sheet</span></label><br>
+<label><input type="checkbox"><span>Ropes / guy lines</span></label><br>
+<label><input type="checkbox"><span>Duct tape / repair tape</span></label><br>
+</div>
+
+<h3>Sleeping</h3>
+<div class="checklist">
+<label><input type="checkbox"><span>Electric insect killer</span></label><br>
+<label><input type="checkbox"><span>Sleeping bag</span></label><br>
+<label><input type="checkbox"><span>Pillow</span></label><br>
+<label><input type="checkbox"><span>Blankets (compressed)</span></label><br>
+</div>
+</section>
+
+<!-- FOOD -->
+<section>
+<h2>3. Food, Water Jug and Kitchen (FWAK)</h2>
+
+<h3>Food & Ingridients</h3>
+<div class="checklist">
+<label><input type="checkbox"><span>Suka</span></label><br>
+<label><input type="checkbox"><span>toyo</span></label><br>
+<label><input type="checkbox"><span>patis</span></label><br>
+<label><input type="checkbox"><span>mantika</span></label><br>
+<label><input type="checkbox"><span>asin</span></label><br>
+<label><input type="checkbox"><span>paminta</span></label><br>
+<label><input type="checkbox"><span>bawang</span></label><br>
+<label><input type="checkbox"><span>sibuyas</span></label><br>
+<label><input type="checkbox"><span>calamansi</span></label><br>
+<label><input type="checkbox"><span>Canned goods</span></label><br>
+<label><input type="checkbox"><span>bread</span></label><br>
+<label><input type="checkbox"><span>coffee</span></label><br>
+<label><input type="checkbox"><span>sugar</span></label><br>
+<label><input type="checkbox"><span>creamer</span></label><br>
+<label><input type="checkbox"><span>Snacks</span></label><br>
+</div>
+<h3>Kitchen Misc</h3>
+<div class="checklist">
+<label><input type="checkbox"><span>Paper plates</span></label><br>
+<label><input type="checkbox"><span>cups</span></label><br>
+<label><input type="checkbox"><span>utensils</span></label><br>
+<label><input type="checkbox"><span>Aluminum foil</span></label><br>
+<label><input type="checkbox"><span>sponge</span></label><br>
+<label><input type="checkbox"><span>lix</span></label><br>
+<label><input type="checkbox"><span>Garbage & plastic bags</span></label><br>
+</div>
+
+<h3>Kitchenware</h3>
+<div class="checklist">
+<label><input type="checkbox"><span>Butane cans</span></label><br>
+<label><input type="checkbox"><span>stove</span></label><br>
+<label><input type="checkbox"><span>Lighter</span></label><br>
+<label><input type="checkbox"><span>Cookset</span></label><br>
+<label><input type="checkbox"><span>Knife</span></label><br>
+<label><input type="checkbox"><span>scissors</span></label><br>
+</div>
+</section>
+
+<!-- TABLE -->
+<section>
+<h2>4. Table and Chairs (TAC)</h2>
+<div class="checklist">
+<label><input type="checkbox"><span>Table</span></label><br>
+<label><input type="checkbox"><span>Chairs</span></label><br>
+</div>
+</section>
+
+<!-- OUTDOOR -->
+<section>
+<h2>5. Outdoor Gear</h2>
+<div class="checklist">
+<label><input type="checkbox"><span>aqua shoes</span></label><br>
+<label><input type="checkbox"><span>Dry bag</span></label><br>
+<label><input type="checkbox"><span>Snorkel</span></label><br>
+<label><input type="checkbox"><span>goggles</span></label><br>
+<label><input type="checkbox"><span>flippers</span></label><br>
+<label><input type="checkbox"><span>Boat</span></label><br>
+<label><input type="checkbox"><span>air pump</span></label><br>
+<label><input type="checkbox"><span>Paddle</span></label><br>
+<label><input type="checkbox"><span>Beach mat</span></label><br>
+<label><input type="checkbox"><span>Umbrella</span></label><br>
+</div>
+</section>
+
+</main>
+
+<script>
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+const percent = document.getElementById('percent');
+const bar = document.getElementById('bar');
+
+function makeSafeId(text) {
+  return text.toLowerCase().trim().replace(/\s+/g,'-').replace(/[^a-z0-9\-]/g,'');
+}
+
+checkboxes.forEach((cb, i) => {
+  if (!cb.id) {
+    const labelText = cb.nextElementSibling?.textContent || `item-${i}`;
+    cb.id = makeSafeId(labelText);
+  }
+
+  // Restore saved state
+  const saved = localStorage.getItem(cb.id);
+  if (saved === 'true') cb.checked = true;
+
+  cb.addEventListener('change', () => {
+    localStorage.setItem(cb.id, cb.checked);
+    updateProgress();
+  });
+});
+
+function updateProgress() {
+  const total = checkboxes.length;
+  const checked = [...checkboxes].filter(c => c.checked).length;
+  const p = Math.round((checked / total) * 100);
+  if (percent) percent.textContent = p + '%';
+  if (bar) bar.style.width = p + '%';
+}
+
+function resetChecklist() {
+  if (!confirm('Reset checklist?')) return;
+  checkboxes.forEach(cb => {
+    cb.checked = false;
+    localStorage.removeItem(cb.id);
+  });
+  updateProgress();
+}
+
+updateProgress();
+
+// Optional: PWA service worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
+</script>
+</body>
+</html>
